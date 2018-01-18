@@ -23,7 +23,7 @@ public class Mail_163Client {
 		System.out.println("邮件发送结果："+result);
 	}
 	
-	public static String sendEmail(final String fromAddr,final String[] toAddrs,final String pwd,String title,String content){
+	public static String sendEmail(final String fromAddr,final String[] toAddrs,final String thirdPwd,String title,String content){
 		Properties props = new Properties();  
         props.setProperty("mail.smtp.auth", "true");  
         props.setProperty("mail.transport.protocol", "smtp");  
@@ -32,7 +32,7 @@ public class Mail_163Client {
             protected PasswordAuthentication getPasswordAuthentication() { 
             	//第三方客户端授权密码和登录密码不一样
             	final String fromAddr_prefixx = fromAddr.split("@")[0];
-                return new PasswordAuthentication(fromAddr_prefixx, pwd);  
+                return new PasswordAuthentication(fromAddr_prefixx, thirdPwd);  
             }  
         });  
         session.setDebug(true);  
